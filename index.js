@@ -6,8 +6,8 @@ class Calculator {
     }
 
  clear() {
-    this.prevOperand = '';
     this.curOperand = '';
+    this.prevOperand = '';
     this.operation = undefined;
 };
 
@@ -16,7 +16,8 @@ class Calculator {
 };
 
  addNumber(number) {
-
+    if (number === "." && this.curOperand.includes(".")) return 
+    this.curOperand = this.curOperand.toString() + number.toString();
 };
 
  getOperation(operation) {
@@ -28,7 +29,7 @@ class Calculator {
 };
 
  updateDisplay() {
-    
+    this.curOutput.innerText = this.curOperand;
 };
 };
 
