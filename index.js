@@ -21,15 +21,23 @@ class Calculator {
 };
 
  getOperation(operation) {
-
+    if (this.curOperand === "") return;
+    if (this.prevOperand !== "") {
+        this.compute();
+    }
+    this.operation = operation;
+    this.prevOperand = this.curOperand;
+    this.curOperand = '';
 };
 
  compute() {
+
 
 };
 
  updateDisplay() {
     this.curOutput.innerText = this.curOperand;
+    this.prevOutput.innerText = this.prevOperand;
 };
 };
 
@@ -48,4 +56,16 @@ numbers.forEach(number => {
         calculator.addNumber(number.innerText);
         calculator.updateDisplay();
     });
+});
+
+operations.forEach(operation => {
+    operation.addEventListener('click', () => {
+        calculator.getOperation(operation.innerText);
+        calculator.updateDisplay();
+    });
+});
+
+equals.addEventListener('click', () => {
+    calculator.compute();
+    calculator.updateDisplay();
 });
