@@ -59,12 +59,33 @@ class Calculator {
     this.curOperand = computation;
     this.operation = undefined;
     this.prevOperand = '';
-
 };
 
+ getCommaNumber(number) {
+    const realNum = number.toString();
+    const aNum = parseFloat(realNum.split(".")[0]);
+    const bNum = realNum.split(".")[1];
+    let numDisplay;
+    if (isNaN(aNum)) {
+        numDisplay = "";
+    } else {
+        numDisplay = aNum.toLocaleString('en', {maximumFractionDigits: 0});
+    };
+    if (bNum != null) {
+        return `${numDisplay}.${bNum}`;
+    } else {
+        return numDisplay;
+    };
+
+ };
+
  updateDisplay() {
-    this.curOutput.innerText = this.curOperand;
-    this.prevOutput.innerText = this.prevOperand;
+    this.curOutput.innerText = this.getCommaNumber(this.curOperand);
+    if (this.operation != null) {
+        this.prevOutput.innerText = `${this.getCommaNumber(this.prevOperand)} ${this.operation}`;
+    } else {
+        this.prevOutput.innerText = "";
+    };
 };
 };
 
