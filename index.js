@@ -35,7 +35,7 @@ class Calculator {
     let current = parseFloat(this.curOperand);
     let previous = parseFloat(this.prevOperand);
     if(isNaN(current) || isNaN(previous)) return; 
-
+    
     switch(this.operation) {
         case "+":
             computation = previous + current;
@@ -80,6 +80,11 @@ class Calculator {
  };
 
  updateDisplay() {
+    if (this.curOperand === "0" && this.prevOperand === "0") {
+        this.curOutput.innerText = "Seriously?";
+        this.prevOutput.innerText = "";
+        return;
+    };
     this.curOutput.innerText = this.getCommaNumber(this.curOperand);
     if (this.operation != null) {
         this.prevOutput.innerText = `${this.getCommaNumber(this.prevOperand)} ${this.operation}`;
