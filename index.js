@@ -9,6 +9,7 @@ class Calculator {
     this.curOperand = '';
     this.prevOperand = '';
     this.operation = undefined;
+    this.operationCompleted = false;
 };
 
  del() {
@@ -16,6 +17,10 @@ class Calculator {
 };
 
  addNumber(number) {
+    if (this.operationCompleted) {
+        this.curOperand = '';
+        this.operationCompleted = false;
+    }
     if (number === "." && this.curOperand.includes(".")) return 
     this.curOperand = this.curOperand.toString() + number.toString();
 };
@@ -59,6 +64,7 @@ class Calculator {
     this.curOperand = Math.round(computation * 100)/100;
     this.operation = undefined;
     this.prevOperand = '';
+    this.operationCompleted = true; 
 };
 
  getCommaNumber(number) {
@@ -104,6 +110,21 @@ const curOutput = document.querySelector('.current-output');
 
 const calculator = new Calculator(prevOutput, curOutput);
 
+document.addEventListener('keydown', (event) => {
+    if (event.code === "Enter") {
+        event.preventDefault();
+        calculator.compute();
+        calculator.updateDisplay();
+    };
+});
+
+document.addEventListener('keydown', (event) => {
+    if (event.code === "Escape") {
+        calculator.clear();
+        calculator.updateDisplay();
+    };
+});
+
 numbers.forEach(number => {
     number.addEventListener('click', () => {
         calculator.addNumber(number.innerText);
@@ -140,7 +161,7 @@ document.addEventListener('keydown', (e) => {
     } else if (e.key == "+" || e.key == "-" || e.key == "*" || e.key == "/") {
         calculator.getOperation(e.key);
         calculator.updateDisplay();
-    } else if (e.key == "=" || e.key == "Enter") {
+    } else if (e.key == "=") {
         calculator.compute();
         calculator.updateDisplay();
     } else if (e.key == "Delete") {
