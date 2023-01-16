@@ -56,7 +56,7 @@ class Calculator {
         default:
         return
     };
-    this.curOperand = computation;
+    this.curOperand = Math.round(computation * 100)/100;
     this.operation = undefined;
     this.prevOperand = '';
 };
