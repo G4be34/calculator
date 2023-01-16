@@ -132,3 +132,19 @@ delBtn.addEventListener('click', () => {
     calculator.del();
     calculator.updateDisplay();
 });
+
+document.addEventListener('keydown', (e) => {
+    if (e.key == "1" || e.key == "2" || e.key == "3" || e.key == "4" || e.key == "5" || e.key == "6" || e.key == "7" || e.key == "8" || e.key == "9" || e.key == ".") {
+        calculator.addNumber(e.key);
+        calculator.updateDisplay();
+    } else if (e.key == "+" || e.key == "-" || e.key == "*" || e.key == "/") {
+        calculator.getOperation(e.key);
+        calculator.updateDisplay();
+    } else if (e.key == "=" || e.key == "Enter") {
+        calculator.compute();
+        calculator.updateDisplay();
+    } else if (e.key == "Delete") {
+        calculator.del();
+        calculator.updateDisplay();
+    };
+});

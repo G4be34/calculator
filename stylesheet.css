@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap');
 
-/* rgba(240, 146, 46, .75) orange button color */
+
 
 *, *::before, *::after {
     box-sizing: border-box;
@@ -35,9 +35,17 @@ body {
     background-color: rgba(240, 146, 46, .75);
 }
 
+#operationBtn:hover {
+    background-color: rgba(252, 187, 118, 0.75);;
+}
+
 #btnNum {
     background-color: rgba(115, 121, 121, 0.75);
 }
+
+#btnNum:hover {
+    background-color: rgba(184, 191, 191, .9);
+} 
 
 .grid-container >button:hover {
     background-color: rgba(184, 191, 191, .9);
