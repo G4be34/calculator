@@ -111,7 +111,7 @@ const curOutput = document.querySelector('.current-output');
 const calculator = new Calculator(prevOutput, curOutput);
 
 document.addEventListener('keydown', (event) => {
-    if (event.code === "Enter") {
+    if (event.code === "Enter" || event.code === "NumpadEnter") {
         event.preventDefault();
         calculator.compute();
         calculator.updateDisplay();
@@ -155,16 +155,16 @@ delBtn.addEventListener('click', () => {
 });
 
 document.addEventListener('keydown', (e) => {
-    if (e.key == "1" || e.key == "2" || e.key == "3" || e.key == "4" || e.key == "5" || e.key == "6" || e.key == "7" || e.key == "8" || e.key == "9" || e.key == ".") {
-        calculator.addNumber(e.key);
+    if (e.code == "1" || e.code == "2" || e.code == "3" || e.code == "4" || e.code == "5" || e.code == "6" || e.code == "7" || e.code == "8" || e.code == "9" || e.code == ".") {
+        calculator.addNumber(e.code);
         calculator.updateDisplay();
-    } else if (e.key == "+" || e.key == "-" || e.key == "*" || e.key == "/") {
-        calculator.getOperation(e.key);
+    } else if (e.code == "+" || e.code == "-" || e.code == "*" || e.code == "/") {
+        calculator.getOperation(e.code);
         calculator.updateDisplay();
-    } else if (e.key == "=") {
+    } else if (e.code == "=") {
         calculator.compute();
         calculator.updateDisplay();
-    } else if (e.key == "Delete") {
+    } else if (e.code == "Delete") {
         calculator.del();
         calculator.updateDisplay();
     };
