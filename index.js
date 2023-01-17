@@ -155,16 +155,16 @@ delBtn.addEventListener('click', () => {
 });
 
 document.addEventListener('keydown', (e) => {
-    if (e.code == "1" || e.code == "2" || e.code == "3" || e.code == "4" || e.code == "5" || e.code == "6" || e.code == "7" || e.code == "8" || e.code == "9" || e.code == ".") {
-        calculator.addNumber(e.code);
+    if (e.key == "1" || e.key == "2" || e.key == "3" || e.key == "4" || e.key == "5" || e.key == "6" || e.key == "7" || e.key == "8" || e.key == "9" || e.key == ".") {
+        calculator.addNumber(e.key);
         calculator.updateDisplay();
-    } else if (e.code == "+" || e.code == "-" || e.code == "*" || e.code == "/") {
-        calculator.getOperation(e.code);
+    } else if (e.key == "+" || e.key == "-" || e.key == "*" || e.key == "/") {
+        calculator.getOperation(e.key);
         calculator.updateDisplay();
-    } else if (e.code == "=") {
+    } else if (e.key == "=") {
         calculator.compute();
         calculator.updateDisplay();
-    } else if (e.code == "Delete") {
+    } else if (e.key == "Delete") {
         calculator.del();
         calculator.updateDisplay();
     };
